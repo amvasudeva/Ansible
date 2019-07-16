@@ -1,0 +1,10 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+    - name: adding contents to motd
+      copy:
+        content: "Hostname: {{ansible_hostname}} \n IPv: {{ ansible_default_ipv4.address }} \n  Processor: {{ ansible_processor }} MACID: {{ ansible_all_ipv4_addresses }}"
+        dest: /tmp/host.txt 

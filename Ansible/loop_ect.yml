@@ -1,0 +1,14 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: user exists and are n correct groups 
+    user:
+      name: "{{ item.name }}"
+      state: present
+      groups: "{{ item.groups }}"
+    with_items:
+      - { name: 'looptest1', groups: 'group7' }
+      - { name: 'looptest2', groups: 'group8'}

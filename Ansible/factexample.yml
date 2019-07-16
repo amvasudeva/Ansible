@@ -1,0 +1,10 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+    - name: adding contents to motd
+      lineinfile:
+        path: /etc/motd
+        line: Hello from "{{ ansible_hostname }}"

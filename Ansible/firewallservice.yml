@@ -1,0 +1,7 @@
+- name: Adding firewalld
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: yes
+

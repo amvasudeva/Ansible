@@ -1,0 +1,24 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  vars:
+    web_package: httpd 
+  tasks:
+  - name: install {{ web_package }} package
+    yum:
+      name: "{{ web_package }}"
+      state: latest
+    when: ansible_distribution=="CentOS"
+    notify:
+      - restart_apache
+
+  handlers:
+  - name: restart_apache
+    service:
+      name: httpd
+      state: restarted
+
+
+

@@ -1,0 +1,4 @@
+- name: enable service 
+  service:
+    name: httpd
+    state: started

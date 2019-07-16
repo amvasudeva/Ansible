@@ -1,0 +1,24 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: installing "http"
+    yum: 
+      name: httpd
+      state: present
+    tags: mytag1
+
+  - name: service start
+    service:
+      name: httpd
+      state: restarted
+    tags: mytag2                  
+
+  - name: install wget
+    yum:
+      name: wget
+      state: present
+
+      

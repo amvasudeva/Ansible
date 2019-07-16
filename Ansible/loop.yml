@@ -1,0 +1,13 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: trying loops and creating user
+    user:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - "looptest1"
+      - "looptest2"
