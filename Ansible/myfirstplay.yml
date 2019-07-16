@@ -1,0 +1,26 @@
+---
+- hosts: all
+  tasks:
+  - name: install apache
+    yum: 
+      name: httpd
+      state: latest
+  
+  - name: enable service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: adding line to index.html
+    lineinfile:
+      path: /var/www/html/index.html
+      line: "We are Learning to write playbook"
+      create: yes
+
+  - name: Adding firewalld
+    firewalld:
+      service: http
+      state: enabled
+      permanent: true
+      immediate: yes

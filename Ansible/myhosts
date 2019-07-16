@@ -1,0 +1,5 @@
+[group1]
+node1.example.com user1=h1user1 user2=h1user2 user3=h1user3
+
+[group2]
+controller.example.com user1=h2user1 user2=h2user2 user3=h2user3

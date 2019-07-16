@@ -1,0 +1,26 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  #vars: 
+    #mygroup1: group3
+  #vars_files:
+    #- myvars.yml
+  tasks:
+  - name: creating new group 
+    group:
+      name: "{{ mygroup1 }}" 
+      state: present
+  - name: creating new user test1236
+    user:
+      name: test1236
+      state: present
+      groups: "{{ mygroup1 }}"
+  - name: creating new user test1237
+    user:
+      name: test1237
+      state: present
+      groups: "{{ mygroup1 }}"
+
+

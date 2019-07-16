@@ -1,0 +1,6 @@
+ansible all -m yum -a "name=httpd state=present"
+ansible all -a "systemctl restart httpd"
+ansible all -a "systemctl enable httpd"
+ansible all -m lineinfile -a "dest=/var/www/html/index.html line="MYHTMLANSIBLE" create=yes"
+ansible all -m firewalld -a "port=80/tcp permanent=yes state=enabled"
+ansible all -a "systemctl restart firewalld"

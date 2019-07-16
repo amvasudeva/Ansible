@@ -1,0 +1,32 @@
+---
+- hosts: all
+  tasks:
+  - name: create group sales 
+    group:
+      name: sales 
+      state: present
+
+  - name: create group purchase
+    group:
+      name: purchase
+      state: present
+
+  - name: Create user1 under sales
+    user:
+      name: user1
+      group: sales
+
+  - name: Create user1 under sales
+    user:
+      name: user2
+      group: sales
+
+  - name: Create user3 under purchase 
+    user:
+      name: user3
+      group: purchase 
+
+  - name: Create user6 under purchase
+    user:
+      name: user6
+      group: purchase 
