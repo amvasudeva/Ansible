@@ -1,0 +1,20 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: install httpd package
+    yum:
+      name: httpd 
+      state: latest
+
+  - name: learning template
+    template:
+      src: /tmp/srcj2template.j2
+      dest: /var/www/index.html
+
+  - name: service status
+    service:
+      name: httpd 
+      state: restarted 

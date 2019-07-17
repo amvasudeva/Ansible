@@ -1,0 +1,7 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  roles:
+    - singleplatform-eng.users

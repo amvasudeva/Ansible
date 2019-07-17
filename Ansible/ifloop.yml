@@ -1,0 +1,22 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: install httpd package
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - httpd
+      - vsftpd
+    when: ansible_memtotal_mb > 3000 
+
+  - name: install vsftpd package
+    yum:
+      name: vsftpd
+      state: latest
+    when: ansible_memtotal_mb < 3000 
+          
+          

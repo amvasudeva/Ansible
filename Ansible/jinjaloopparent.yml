@@ -1,0 +1,10 @@
+---
+- name: learning playbook
+  hosts: all
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: learning template
+    template:
+      src: /root/Ansible/jinjaloop.yml
+      dest: /root/Ansible/destjlooptesmplate.txt
