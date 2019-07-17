@@ -1,2 +1,15 @@
 ---
-# tasks file for accenture_blore
+- name: create groups
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - group14
+    - group15
+  notify:
+    - user_creation
+  
+- name: add ht
+  template:
+    src: myindex.j2
+    dest: /tmp/motd

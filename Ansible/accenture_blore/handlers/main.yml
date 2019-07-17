@@ -1,2 +1,10 @@
 ---
-# handlers file for accenture_blore
+- name: user_creation 
+  user:
+    name: "{{ item.name }}"
+    state: present
+    groups: "{{ item.groups }}"
+  with_items:
+    - { name: 'looptest14', groups: 'group17' }
+    - { name: 'looptest15', groups: 'group18'}
+    

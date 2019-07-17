@@ -1,0 +1,13 @@
+---
+- name: learning roles
+  hosts: all
+  remote_user: devops
+  become: yes
+  pre_tasks:
+    - debug:
+        msg: "Creating users, Groups and templates"
+  roles:
+    - accenture_blore 
+  post_tasks:
+    - debug:
+        msg: "Created users, Groups and templates"
