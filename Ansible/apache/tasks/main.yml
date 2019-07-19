@@ -1,0 +1,19 @@
+---
+- name: install httpd
+  yum:
+    name: httpd
+    state: latest
+
+- name: Start Http
+  service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: add html
+  template:
+    src: myindex.j2
+    dest: /var/www/html/index.html
+  notify:
+    - restart_httpd
+

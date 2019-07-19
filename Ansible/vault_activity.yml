@@ -1,0 +1,12 @@
+---
+- name: learning playbook
+  hosts: localhost 
+  remote_user: devops
+  become: yes
+  vars_files:
+    - /root/Ansible/zippass.yml
+  tasks:
+  - name: unZip contents of webrole
+    command:
+      unzip -o -P {{ mypassword }} /root/Ansible/webroles.zip -d /tmp
+      

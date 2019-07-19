@@ -1,0 +1,14 @@
+---
+- name: learning roles
+  hosts: all
+  remote_user: devops
+  become: yes
+  pre_tasks:
+    - debug:
+        msg: "Learning DevOps is always Learning state"
+  roles:
+    - mysql
+    - apache 
+  post_tasks:
+    - debug:
+        msg: "Learning DevOps is always Learning state!!!!!!"

@@ -1,0 +1,21 @@
+---
+- name: Put selinux in permessive
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: Include a file to setuphttpd
+  include_tasks: /root/Ansible/installapache.yml
+  when: ansible_hostname=="node1"
+
+- name: add html
+  template:
+    src: myindex.j2
+    dest: /tmp/motd 
+
+- name: modify sshd_config password authentication set to no
+  lineinfile:
+    dest: /etc/ssh/sshd_config 
+    insertafter: '^#?#?PermitRootLogin without-password' 
+    line: 'PermitRootLogin no'
+    state: present

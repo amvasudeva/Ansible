@@ -1,0 +1,17 @@
+---
+- name: learning playbook
+  hosts: node1.example.com 
+  remote_user: devops
+  become: yes
+  tasks:
+  - name: install httpd package
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - httpd
+      - vsftpd
+    when: ansible_memtotal_mb > 3000 
+  - name: Tell Master
+    action: shell echo "{{ ansible_fqdn }} done" >> /tmp/list
+    delegate_to: controller.example.com

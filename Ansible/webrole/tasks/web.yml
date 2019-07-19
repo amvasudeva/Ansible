@@ -1,0 +1,28 @@
+---
+- name: install httpd
+  yum:
+    name: httpd
+    state: latest
+  
+- name: Start Http
+  service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: add html
+  template:
+    src: myindex1.j2
+    dest: /var/www/html/index.html
+  notify:
+    - restart_httpd
+
+- name: firewall status
+  firewalld:
+    port: 80/tcp 
+    state: enabled
+    permanent: true
+    immediate: yes
+
+- debug:
+    msg: "This is my Web Server IPv4 IP Address: {{ ansible_default_ipv4.address }}"

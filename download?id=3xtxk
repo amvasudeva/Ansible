@@ -1,0 +1,14 @@
+Install python-pip
+ yum install epel-release
+ yum install python-pi
+ yum install python-devel
+ 
+ Create a virtual env
+  421  python -m pip install virtualenv
+  422  python -m virtualenv my_evn
+  423  source my_env/bin/activate
+   python -m pip install molecule docker
+    424  molecule init role -r ansible-apache -d docker
+  425  cd ansible-apache/
+  426  tree 
+  427  molecule test
